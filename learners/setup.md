@@ -2,48 +2,24 @@
 title: Setup
 ---
 
-Setup instructions live in this document. Please specify the tools and the data
-sets the Learner needs to have installed.
+Setup instructions live in this document. 
 
 ## Data Sets
 
-Download the [data zip file](data/data.zip) and unzip it to your Desktop
+
 
 ## Software Setup
 
-::::::::::::::::::::::::::::::::::::::: discussion
+### Imports and Requirements
+The antibody encoding method we will be using is the Propythia program. Before starting we recommend installing it by copying and pasting the following command in your terminal/command line:
 
-### Details
+`pip install propythia`
 
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+The machine learning models that we will use are imported from the sklearn package. We also suggest installing this via the following command: 
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
+`pip install sklearn`
 
-:::::::::::::::: solution
-
-### Windows
-
-Use PuTTY
-
-:::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### MacOS
-
-Use Terminal.app
-
-:::::::::::::::::::::::::
+As this is a large package, rather than importing the whole package, it is better practise to just import the fuctions we require. As this usually leaves with a lot of import statements, we have broken them down what imports are required at what stage of the process.
 
 
-:::::::::::::::: solution
-
-### Linux
-
-Use Terminal
-
-:::::::::::::::::::::::::
 

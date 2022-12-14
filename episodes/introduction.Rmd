@@ -1,0 +1,83 @@
+---
+title: "Antibodies - Case Study"
+teaching: 10
+exercises: 2
+---
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How may we create a machine learning classifier that can tell apart two groups of proteins?
+
+- How may we improve upon the performance of a machine learning classifier that does not perform so well?
+
+- How may we check for overfitting in a trained machine learning classifier?
+
+- How may we pick the most relevant data points that are related to the class of a sample?
+
+- Can we also train a deep learning predictor to tell proteins apart?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Understand how protein sequences can become readable to machine learning predictors
+
+- Practise machine learning optimisation techniques including GridSearchCV and dimensionality reduction
+
+- Check for overfitted data by testing with a totally naive dataset
+
+- Pracitse prediction by applying a deep learning model to the problem and evaluating its performance
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+# Separating Mouse and Human Antibody Sequences using Protein Encoding and Machine Learning Classifiers
+
+
+## Introduction 
+
+If we want to generate a classifier that observes the differences between two groups of protein seequences, then we need to extract numerical information from our sequences. This is called encoding and can be done through a variety of ways inlcuding residue level encoding of each amino acid in your sequences with a 1x20 vector, representing the possibility of 20 amino acids at each residue. This is called One Hot Encoding, but often leads to a sparse dataset which is not suitable for machine learning tasks, and each sequence must be spaced out so they are of equal length. Instead, in this example we use the physiochemical properties that may be calculated from the sequence as our numeric information (ElAbd *et al.*, 2020). 
+
+Antibodies are made up of two heavy and two light chains, however, the functional antigen-binding domains are Fv fragments at each fork of the "Y" shape. These Fv fragments are where the VH domain of a heavy chain and VL domain of a light chain interact and so much study has been dedicated to these regions. An antibody record is considered "paired" when both the VH and VL sequences of one antibody are known. This knowledge was rare in the past and came from studying individual antibodies, however, the advent of B-cell encapsulation and Next Generation Sequencing now allowed researchers to sequence a repertoire of paired antibodies (Rajan *et al.*, 2018).
+
+In this exercise, we will use a sample of 1000 Human and 1000 Mouse paired antibodies taken from the Observed Antibody Space (Olsen *et al.*, 2022) and develop a machine learning classifier to separate them. Firstly, we will use Propythia (Sequeira *et al.*, 2022) to generate our encodings from an input of Fasta formatted sequences. Secondly, we will split those encodings into training and test datasets for a selection of machine learning classifiers and plot our results. Finally we will try to improve our performance through principal component analysis (PCA), which also helps to visualise our dataset.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+use_virtualenv("carp-env")
+```
+
+
+```{python}
+##Get Encodings###
+import sys
+import pandas as pd
+import numpy as np
+
+```
+
+```{python}
+##Get Encodings###
+import sys
+import pandas as pd
+from pandas import read_csv
+sys.path.append('../src/')
+sys.path.append('')
+import propythia
+
+```
+
+
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- Protein sequences must be numerically encoded to be readable by machine learning algorithms.
+
+- It is sometimes necessary to experiment with different machine learning classifiers or hyperparameterisation techniques, to achieve the best prediction results.
+
+- Check the performance of your model with a "held back" dataset which was not included in the training set.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+[r-markdown]: https://rmarkdown.rstudio.com/
